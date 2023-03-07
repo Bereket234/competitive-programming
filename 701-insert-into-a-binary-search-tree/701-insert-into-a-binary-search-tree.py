@@ -7,22 +7,12 @@
 class Solution:
     def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
         def insert(node):
-            if node and node.val > val and (not node.left):
-                node.left= TreeNode(val)
-                return
-            if node and node.val < val and (not node.right):
-                node.right= TreeNode(val)
-                return
             if not node:
-                node = TreeNode(val)
+                return TreeNode(val)
             if node.val < val:
-                insert(node.right)
+                node.right= insert(node.right)
             if node.val > val:
-                insert(node.left)
-
-        if root:        
-            insert(root)
-            return root
-        else:
-            return TreeNode(val)
+                node.left= insert(node.left)
+            return node
+        return insert(root)
             
