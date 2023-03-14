@@ -1,20 +1,22 @@
 class Solution:
-    
+    #problem backtracking by considering and evaluating each case
     def combine(self, n: int, k: int) -> List[List[int]]:
-        ans=[]
-        stack=[]
-        def backtrack(start, end):
-            if len(stack) == k:
-                arr= [i for i in stack]
-                ans.append(arr)
-                return
-            if start > end:
+        ans= []
+        combinations= []
+        
+        #recursive function to backtrack and append each possible answer
+        def backtrack(start):
+            # case when we find a valid lengh of numbers whick equals k
+            if len(combinations) == k:
+                copy= combinations.copy()
+                ans. append(copy)
                 return
             
-            for i in range(start, end):
-                stack.append(i)
-                backtrack(i + 1, end)
-                stack.pop()
-        backtrack(1, n+1)
+            for i in range(start, n+1):
+                combinations.append(i)
+                backtrack(i + 1)
+                combinations.pop()
+        backtrack(1)
         return ans
+        
             
