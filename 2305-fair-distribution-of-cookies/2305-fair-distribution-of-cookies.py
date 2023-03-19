@@ -1,7 +1,6 @@
 class Solution:
     def distributeCookies(self, cookies: List[int], k: int) -> int:
         def dfs(i, mx):
-  
             if mx >= self.ans:
                 return
 
@@ -16,7 +15,6 @@ class Solution:
             return
 
         kids, self.ans = defaultdict(int), inf
-        cookies.sort(reverse=True)
         dfs(0,0)
 
         return self.ans
