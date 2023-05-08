@@ -23,12 +23,7 @@ class Solution:
                     cnt[child] -= 1
                 if cnt[child] == 0:
                     que.append(child)
-        print(que, cnt)
-        res= []
-        for recipe in recipes:
-            if cnt[recipe] == 0:
-                res.append(recipe)
                 
-        return res
+        return [recipe for recipe in recipes if cnt[recipe] == 0]
                 
             
