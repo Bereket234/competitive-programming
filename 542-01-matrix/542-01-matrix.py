@@ -12,20 +12,16 @@ class Solution:
         for i in range(len(mat)):
             for j in range(len(mat[0])):
                 if not mat[i][j]:
-                    deq.append((i, j))
+                    deq.append((i, j, 0))
         
         while deq:
-            i, j= deq.popleft()
-            visited[i][j] = 0
+            i, j, d= deq.popleft()
+            res[i][j]= d
             for x, y in path:
                 newx, newy= i+ x, j + y
                 if inbound(newx, newy) and visited[newx][newy] and mat[newx][newy]:
-                    if res[newx][newy]:
-                        res[newx][newy]= min(res[newx][newy], res[i][j] + 1)
-                        deq.append((newx, newy))
-                        continue
-                    res[newx][newy]= res[i][j] + 1
-                    deq.append((newx, newy))
+                    visited[newx][newy] = 0
+                    deq.append((newx, newy, d + 1))
         return res
                 
             
