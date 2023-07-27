@@ -1,8 +1,19 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        res= 0
-        for i in range(1, len(prices)):
-            diff= prices[i]- prices[i-1]
-            if diff > 0:
-                res+=diff
+        buy= sell= float('inf')
+        res= profit= 0
+        
+        for price in prices:
+            if price <= sell:
+                buy= price
+                sell= price
+                res += profit
+                profit = 0
+            else:
+                sell = price
+                profit= sell - buy
+        res += profit
         return res
+                
+                
+                
