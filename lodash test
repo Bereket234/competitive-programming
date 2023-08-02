@@ -1,0 +1,18 @@
+const _ = require('lodash')
+
+const arr = [3,2,1]
+console.log("original array",arr)
+
+console.log(_.concat(arr, 2, [3], [[4]]))
+
+console.log(_.sortBy(arr))
+
+console.log(_.filter(arr,(num)=>num%2))
+
+console.log(_.chunk(arr,2))
+
+//debounce
+const debouncer = _.debounce(()=>{console.log('debounced after 3 sec')},3000,{leading:false,trailing:true})
+debouncer()
+
+console.log("original array after oprations",arr)
